@@ -13,7 +13,6 @@
 
           /* GRADIENTS */
           --background-image-gradient-main-light: linear-gradient(180deg,rgba(242, 242, 242, 1) 50%, rgba(181, 181, 181, 1) 100%);
-
           --background-image-gradient-main-dark: linear-gradient(180deg,rgba(23, 23, 23, 1) 50%, rgba(18, 18, 18, 1) 100%);
 
           /* Primary */
@@ -30,6 +29,9 @@
      --font-motto: 'Prompt';
      --font-handwritten: 'Indie Flower';
      --font-ui: 'Google Sans';
+
+     /* RADIUS */
+     --radius-ui: 10px;
 }
 
 @layer {
@@ -42,6 +44,16 @@
           @apply bg-gradient-main-light dark:bg-gradient-main-dark;
           @apply text-main-dark dark:text-main-light;
      }
+
+     .footer-nav {
+          @apply md:hidden flex gap-1;
+          @apply w-full h-20 px-2 pb-2;
+          @apply rounded-t-[37%];
+          @apply bg-white/25 dark:bg-black/40;
+          @apply border-t-4 border-white/50 dark:border-black/50;
+          @apply overflow-hidden;
+     }
+
 }
 
 /* FONTS */

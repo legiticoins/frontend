@@ -3,6 +3,7 @@ import ToggleDarkMode from "../components/UI/ToggleDarkMode.astro";
 import Options from "../components/UI/Options.astro";
 import { Icon } from "astro-icon/components";
 
+
 ---
 
 <div class="relative flex w-full px-5 py-5 text-[10px]">
@@ -10,7 +11,7 @@ import { Icon } from "astro-icon/components";
 	<!-- ANCHOR TO LEFT -->
 	<div class="mr-auto flex">
 		<div class="md:justify-self-start flex gap-5 items-center">
-			<button onclick="history.back();" class="hidden md:flex hover:cursor-pointer text-[25px] items-center translate-y-0.5">
+			<button onclick="goBackHome()" class="hidden md:flex hover:cursor-pointer text-[25px] items-center translate-y-0.5">
 				<Icon name="back"/>
 			</button>
 			<ToggleDarkMode />
@@ -24,3 +25,16 @@ import { Icon } from "astro-icon/components";
 		</div>
 	</div>
 </div>
+
+<script is:inline>
+
+	window.goBackHome = function() {
+		// If Home, Redirect to Home.
+		// If Not Home, Go Back
+		if (window.location.href === '/') {
+			Astro.redirect('/', 304);
+		} else {
+			history.back()
+		}
+	}
+</script>

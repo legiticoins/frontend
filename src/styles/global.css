@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+@plugin "daisyui" {
+     themes: light --default, dark --prefersdark;
+}
+
+@custom-variant dark (&:where(:has(input.theme-controller[value=dark]:checked) *, :has(input.theme-controller[value=dark]:checked)));
 
 @theme {
      /* COLORS */

@@ -1,7 +1,15 @@
 ---
 import ToggleDarkMode from "../components/UI/ToggleDarkMode.astro";
+import Options from "../components/UI/Options.astro";
 ---
 
-<div class="md:justify-self-end px-5 py-5 text-[10px]">
-	<ToggleDarkMode />
+<div class="relative flex w-full px-5 py-5 text-[10px]">
+	
+	<div class="md:justify-self-end mr-auto">
+		<ToggleDarkMode />
+	</div>
+
+	<div class="md:justify-self-end ml-auto">
+		<Options />
+	</div>
 </div>

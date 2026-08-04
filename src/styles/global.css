@@ -23,6 +23,8 @@
           --color-secondary-light: #C9C9C9;
           --color-secondary-dark: #121212;
 
+          /* Tertiary */
+          --color-tertiary-dark: #292929;
 
      /* FONTS */
      --font-wordmark: 'Sekuya Regular';
@@ -52,6 +54,14 @@
           @apply bg-white/25 dark:bg-black/40;
           @apply border-t-4 border-white/50 dark:border-black/50;
           @apply overflow-hidden;
+     }
+
+     .header-options {
+          @apply p-2;
+          @apply overflow-hidden;
+          @apply rounded-b-ui rounded-l-ui;
+          @apply bg-primary-light dark:bg-primary-dark md:dark:bg-black/40;
+          @apply border border-white/30 backdrop-blur-2xl shadow-xl/30;
      }
 
 }

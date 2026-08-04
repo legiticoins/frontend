@@ -1,0 +1,53 @@
+@import 'tailwindcss';
+
+@theme {
+     /* COLORS */
+          /* Main */
+          --color-main-light: #ffffff;
+          --color-main-dark: #121212;
+
+          /* Primary */
+          --color-primary-light: #EBEBEB;
+          --color-primary-dark: #121212;
+          
+          /* Secondary */
+          --color-secondary-light: #C9C9C9;
+          --color-secondary-dark: #121212;
+
+
+     /* FONTS */
+     --font-wordmark: 'Sekuya Regular';
+     --font-motto: 'Prompt';
+     --font-handwritten: 'Indie Flower';
+     --font-ui: 'Google Sans';
+}
+
+@layer {
+
+     /* Page Background */
+     .page {
+          @apply w-screen h-screen;
+          @apply m-0;
+          @apply relative;
+          @apply bg-main-light dark:bg-main-dark;
+          @apply text-main-dark dark:text-main-light;
+     }
+}
+
+/* FONTS */
+@font-face {
+     font-family: 'Sekuya Regular';
+     src: url('../assets/font/text/Sekuya-Regular.ttf');
+}
+@font-face {
+     font-family: 'Google Sans';
+     src: url('../assets/font/ui/GoogleSans-Bold.ttf');
+}
+@font-face {
+     font-family: 'Prompt';
+     src: url('../assets/font/text/Prompt-Bold.ttf');
+}
+@font-face {
+     font-family: 'Indie Flower';
+     src: url('../assets/font/handwritten/IndieFlower-Regular.ttf');
+}

@@ -11,6 +11,11 @@
           --color-main-light: #ffffff;
           --color-main-dark: #121212;
 
+          /* GRADIENTS */
+          --background-image-gradient-main-light: linear-gradient(180deg,rgba(242, 242, 242, 1) 50%, rgba(181, 181, 181, 1) 100%);
+
+          --background-image-gradient-main-dark: linear-gradient(180deg,rgba(23, 23, 23, 1) 50%, rgba(18, 18, 18, 1) 100%);
+
           /* Primary */
           --color-primary-light: #EBEBEB;
           --color-primary-dark: #121212;
@@ -34,7 +39,7 @@
           @apply w-screen h-screen;
           @apply m-0;
           @apply relative;
-          @apply bg-main-light dark:bg-main-dark;
+          @apply bg-gradient-main-light dark:bg-gradient-main-dark;
           @apply text-main-dark dark:text-main-light;
      }
 }

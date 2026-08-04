@@ -1,5 +1,9 @@
 ---
 import { Icon } from "astro-icon/components";
+import { isLoggedIn } from "../../pages/login.ts";
+const cookies = Astro.cookies;
+
+const loggedIn = await isLoggedIn(cookies)
 ---
 
 <div class="dropdown dropdown-end gap-2 font-ui hover:cursor-pointer">
@@ -9,16 +13,15 @@ import { Icon } from "astro-icon/components";
   <ul tabindex="-1" class="w-60 my-1 dropdown-content justify-items-start menu z-1 header-options">
      
      
-     <!-- Job -->
-
-     <!-- Create New Job -->
-     <li>
+       <li>
+          <!-- Job -->
           <a href="/my-jobs" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="apps"/>
                </div>
                My Jobs
           </a>
+          <!-- Create New Job -->
           <a href="/create-job" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="plus"/>
@@ -26,11 +29,9 @@ import { Icon } from "astro-icon/components";
                Create New Job
           </a>
      </li>
-
      <!-- LINE -->
-     <div class="h-0 justify-self-center flex hover:border-b-white/90 border-b my-2 m-auto w-[90%]"></div>     
+     <div class="h-0 justify-self-center flex border-b-white/40 border-b my-2 m-auto w-[90%]"></div>     
      
-     <!-- Profile -->
      <li>
           <a href="/profile" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10">
                <div class="text-2xl scale-70">
@@ -39,8 +40,7 @@ import { Icon } from "astro-icon/components";
                Profile
           </a>
      </li>
-
-     <!-- Transactions -->
+     <!-- Profile -->
      <li>
           <a href="/transactions" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
@@ -61,7 +61,7 @@ import { Icon } from "astro-icon/components";
      </li>
 
      <!-- LINE -->
-     <div class="h-0 justify-self-center flex hover:border-b-white/90 border-b my-2 m-auto w-[90%]"></div>     
+     <div class="h-0 justify-self-center flex border-b-white/40 border-b my-2 m-auto w-[90%]"></div>     
           
      <!-- Terms of Use -->
      <li>

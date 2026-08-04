@@ -1,0 +1,13 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const url = Astro.url
+---
+
+<Layout title="Page Not Found">
+     <div class="w-full absolute top-1/4 grid items-center justify-center">
+          <h1 class="font-wordmark text-3xl md:text-4xl">404 NOT FOUND</h1>
+          <p class="font-ui text-[13px] text-center opacity-50 my-2 md:text-[13px]">Couldn't find the endpoint: <span class="underline">'{url.pathname}'</span></p>
+          <a href="/" class="font-ui text-[13px] text-center opacity-50 md:text-20 hidden md:block underline">Click here to Go Home.</a>
+     </div>
+</Layout>

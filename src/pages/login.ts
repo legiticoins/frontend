@@ -7,7 +7,7 @@ const REDIRECT_URI = `${SITE_ROOT}/login`;
 
 export async function isLoggedIn(cookies: AstroCookies) {
   return (
-    cookies.get("authorization.sessionToken") && cookies.get("profile.uuid")
+    cookies.get("authorization.token") && cookies.get("profile.uuid")
   );
 }
 

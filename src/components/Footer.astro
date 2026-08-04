@@ -1,8 +1,38 @@
 ---
+import { Icon } from "astro-icon/components";
+
 ---
 
-<main class="w-full px-2 py-1 absolute bottom-0">
-     <div class="font-ui opacity-30 text-center">
+<main class="w-full absolute font-ui bottom-0 flex flex-col gap-1">
+     <div class="px-2 py-1 opacity-40 text-center text-[10px]">
           World Wide Legiticoins @ LegitiDevs.
      </div>
+     <!-- Footer Nav Bar -->
+     <div class="footer-nav">
+
+          <!-- BUTTONS -->
+          <!-- Dashboard -->
+          <a href='/' class="flex-1 text-center flex items-center justify-center rounded-b-ui bg-black/5 dark:bg-white/5 px-2">
+               <div class="text-3xl">
+                    <Icon name="home"/>
+               </div>
+          </a>
+
+          <!-- Settings -->
+          <a href='/settings' class="flex-1 text-center flex items-center justify-center rounded-b-ui bg-black/5 dark:bg-white/5 px-2">
+               <div class="text-3xl">
+                    <Icon name="settings"/>
+               </div>
+          </a>
+          
+          <!-- Dashboard -->
+          <a href='/dashboard' class="flex-1 text-center flex items-center justify-center rounded-b-ui bg-black/5 dark:bg-white/5 px-2">
+               <div class="text-3xl">
+                    <Icon name="dashboard"/>
+               </div>
+          </a>
+
+          
+     </div>
 </main>
+

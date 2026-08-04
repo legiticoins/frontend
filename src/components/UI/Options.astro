@@ -1,0 +1,77 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="dropdown dropdown-end gap-2 font-ui hover:cursor-pointer">
+  <div tabindex="0" role="button" class="text-2xl">
+     <Icon name="options"/>
+  </div>
+  <ul tabindex="-1" class="w-70 my-1 dropdown-content justify-items-start menu z-1 header-options">
+     
+     <h1 class="px-2 text-[20px] mb-5 mt-2.5 underline underline-offset-10">Service</h1>
+     
+     <!-- Profile -->
+
+     <!-- Create New App -->
+     <li>
+          <a href="/my-apps" class="flex text-[17px] items-center"> 
+               <div class="text-2xl">
+                    <Icon name="apps"/>
+               </div>
+               My Apps
+          </a>
+          <a href="/create-app" class="flex text-[17px] items-center"> 
+               <div class="text-2xl">
+                    <Icon name="plus"/>
+               </div>
+               Create New App
+          </a>
+     </li>
+     
+     
+     <h1 class="px-2 text-[20px] my-5 underline underline-offset-10 w-60">Account</h1>
+     
+     <!-- Profile -->
+     <li>
+          <a href="/profile" class="flex text-[17px] items-center">
+               <div class="text-2xl scale-70">
+                    <Icon name="profile"/>
+               </div>
+               Profile
+          </a>
+     </li>
+
+     <!-- Create New App -->
+     <li>
+          <a href="/transactions" class="flex text-[17px] items-center"> 
+               <div class="text-2xl">
+                    <Icon name="transactions"/>
+               </div>
+               Transactions
+          </a>
+     </li>
+     
+     <!-- Transactions -->
+     <li>
+          <a href="/logout" class="flex text-[17px] items-center"> 
+               <div class="text-2xl">
+                    <Icon name="logout"/>
+               </div>
+               Logout
+          </a>
+     </li>
+
+     <h1 class="px-2 text-[20px] my-5 underline underline-offset-10 w-60">Miscellaneous</h1>
+     
+     <!-- Profile -->
+     <li>
+          <a href="/profile" class="flex text-[17px] items-center">
+               <div class="text-2xl scale-70">
+                    <Icon name="profile"/>
+               </div>
+               Terms of Use
+          </a>
+     </li>
+
+  </ul>
+</div>

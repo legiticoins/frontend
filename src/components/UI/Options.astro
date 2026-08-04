@@ -6,34 +6,33 @@ import { Icon } from "astro-icon/components";
   <div tabindex="0" role="button" class="text-2xl">
      <Icon name="options"/>
   </div>
-  <ul tabindex="-1" class="w-70 my-1 dropdown-content justify-items-start menu z-1 header-options">
+  <ul tabindex="-1" class="w-60 my-1 dropdown-content justify-items-start menu z-1 header-options">
      
-     <h1 class="px-2 text-[20px] mb-5 mt-2.5 underline underline-offset-10">Service</h1>
      
-     <!-- Profile -->
+     <!-- Job -->
 
-     <!-- Create New App -->
+     <!-- Create New Job -->
      <li>
-          <a href="/my-apps" class="flex text-[17px] items-center"> 
+          <a href="/my-jobs" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="apps"/>
                </div>
-               My Apps
+               My Jobs
           </a>
-          <a href="/create-app" class="flex text-[17px] items-center"> 
+          <a href="/create-job" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="plus"/>
                </div>
-               Create New App
+               Create New Job
           </a>
      </li>
-     
-     
-     <h1 class="px-2 text-[20px] my-5 underline underline-offset-10 w-60">Account</h1>
+
+     <!-- LINE -->
+     <div class="h-0 justify-self-center flex hover:border-b-white/90 border-b my-2 m-auto w-[90%]"></div>     
      
      <!-- Profile -->
      <li>
-          <a href="/profile" class="flex text-[17px] items-center">
+          <a href="/profile" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10">
                <div class="text-2xl scale-70">
                     <Icon name="profile"/>
                </div>
@@ -41,9 +40,9 @@ import { Icon } from "astro-icon/components";
           </a>
      </li>
 
-     <!-- Create New App -->
+     <!-- Transactions -->
      <li>
-          <a href="/transactions" class="flex text-[17px] items-center"> 
+          <a href="/transactions" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="transactions"/>
                </div>
@@ -51,23 +50,24 @@ import { Icon } from "astro-icon/components";
           </a>
      </li>
      
-     <!-- Transactions -->
+     <!-- Logout -->
      <li>
-          <a href="/logout" class="flex text-[17px] items-center"> 
-               <div class="text-2xl">
+          <a href="/logout" class="flex text-[13px] items-center hover:bg-red-400/50 text-red-400"> 
+               <div class="text-2xl scale-70">
                     <Icon name="logout"/>
                </div>
                Logout
           </a>
      </li>
 
-     <h1 class="px-2 text-[20px] my-5 underline underline-offset-10 w-60">Miscellaneous</h1>
-     
-     <!-- Profile -->
+     <!-- LINE -->
+     <div class="h-0 justify-self-center flex hover:border-b-white/90 border-b my-2 m-auto w-[90%]"></div>     
+          
+     <!-- Terms of Use -->
      <li>
-          <a href="/profile" class="flex text-[17px] items-center">
+          <a href="/profile" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10">
                <div class="text-2xl scale-70">
-                    <Icon name="profile"/>
+                    <Icon name="info"/>
                </div>
                Terms of Use
           </a>

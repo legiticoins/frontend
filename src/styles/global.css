@@ -57,9 +57,10 @@
      }
 
      .header-options {
-          @apply p-2;
+          @apply p-2 py-3;
           @apply overflow-hidden;
           @apply rounded-b-ui rounded-l-ui;
+          @apply text-black/70 dark:text-white/70;
           @apply bg-primary-light dark:bg-primary-dark md:dark:bg-black/40;
           @apply border border-white/30 backdrop-blur-2xl shadow-xl/30;
      }

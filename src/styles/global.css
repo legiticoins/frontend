@@ -47,6 +47,23 @@
           @apply text-main-dark dark:text-main-light;
      }
 
+     .dashboard {
+          @apply rounded-ui overflow-hidden;
+          @apply w-screen h-screen;
+          @apply bg-gradient-main-light dark:bg-gradient-main-dark;
+          @apply text-main-dark dark:text-main-light;
+     
+          .left-sidebar {
+               @apply p-2 px-2;
+               @apply w-[25%] max-w-55 h-full;
+               @apply font-ui;
+               @apply dark:text-main-light/75 text-main-dark/45;
+               @apply border-r;
+               @apply border-main-dark/50 dark:border-main-light/50;
+          }
+
+     }
+
      .footer-nav {
           @apply md:hidden flex gap-1;
           @apply w-full h-20 px-2 pb-2;

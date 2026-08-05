@@ -1,10 +1,10 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
-import JobsAstroComponent from "../../components/UI/Dashboard/Svelte/Jobs.svelte"
+import JobsSvelteComponent from "../../components/UI/Dashboard/Svelte/Jobs.svelte"
 
 const title = "My Jobs"
 
 ---
 <Layout title={title}>
-     <JobsAstroComponent client:idle />
+     <JobsSvelteComponent client:idle />
 </Layout>

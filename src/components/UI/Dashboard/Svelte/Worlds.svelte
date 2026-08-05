@@ -27,7 +27,7 @@
           worldsData.forEach(async (world: any) => {
                const response = await fetch(`https://wwlc.legiti.dev/api/world/${world.world_uuid.split("-").join("")}`, {
                     headers: {
-                         Authorization: `Bearer ${data.userUUID.split("-").join("")}`
+                         Authorization: `Bearer ${data.authToken}`
                     }
                }).then(async response => response.json())
                if (response.success === "true") {

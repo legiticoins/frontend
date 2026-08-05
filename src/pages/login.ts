@@ -2,14 +2,12 @@ import type { APIRoute, AstroCookies } from "astro";
 import { BACKEND_URL, SITE_ROOT } from "astro:env/client";
 import { randomBytes, createHash } from "crypto";
 
-const { MCAUTH_CLIENT_ID, MCAUTH_CLIENT_SECRET } = process.env
+const { MCAUTH_CLIENT_ID, MCAUTH_CLIENT_SECRET } = process.env;
 
 const REDIRECT_URI = `${SITE_ROOT}/login`;
 
 export async function isLoggedIn(cookies: AstroCookies) {
-  return (
-    cookies.get("authorization.token") && cookies.get("profile.uuid")
-  );
+  return cookies.get("authorization.token") && cookies.get("profile.uuid");
 }
 
 export const GET: APIRoute = async ({ url, cookies, redirect, request }) => {
@@ -61,6 +59,7 @@ export const GET: APIRoute = async ({ url, cookies, redirect, request }) => {
     body: JSON.stringify(mcAuthPostRequestBody),
   });
   const backendResponseBody = await backendResponse.json();
+  console.log(backendResponseBody);
 
   if (
     backendResponseBody.success == false ||

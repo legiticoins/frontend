@@ -1,7 +1,10 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
 import WorldsAstroComponent from "../../components/UI/Dashboard/Svelte/Worlds.svelte"
+
+const cookies = Astro.cookies;
+
 ---
 <Layout title="My Worlds">
-     <WorldsAstroComponent client:idle/>
+     <WorldsAstroComponent client:idle cookies/>
 </Layout>

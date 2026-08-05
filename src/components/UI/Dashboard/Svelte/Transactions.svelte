@@ -1,8 +1,6 @@
 <script>
-
      const { title } = $props();
-
-     const transactions = []
+     const transactions = $state([])
 </script>
 
 <div class="w-full md:px-5 font-ui">

@@ -1,14 +1,19 @@
 <script lang=ts>
+
      // Widgets
      import WorldWidget from "./Widgets/Worlds.svelte"
+     import type { AstroCookies } from "astro";
      
+     const { cookies } = $props();
+
      interface IWorldData {
           uuid: string,
           name: string
      }
-
      const worlds: IWorldData[] = $state([])
      
+     console.log(cookies)
+
 </script>
 
 <div class="w-full md:px-5 font-ui">
@@ -18,7 +23,7 @@
 
           <!-- If No Worlds -->
           {#if worlds.length === 0}
-               <p class="opacity-40">Click the '+' icon to create a World Record.</p>
+               <p class="opacity-40">You have no worlds!</p>
           {/if}
 
           {#each worlds as world}

@@ -25,29 +25,4 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
   },
-
-  env: {
-    schema: {
-      SITE_ROOT: envField.string({
-        context: "client",
-        access: "public",
-        default: "https://wwlc.legiti.dev",
-      }),
-      BACKEND_URL: envField.string({
-        context: "client",
-        access: "public",
-        default: "https://wwlc.legiti.dev/api",
-      }),
-      MCAUTH_CLIENT_ID: envField.string({
-        context: "server",
-        access: "public",
-        default: ""
-      }),
-      MCAUTH_CLIENT_SECRET: envField.string({
-        context: "server",
-        access: "secret",
-        default: ""
-      }),
-    },
-  },
 });

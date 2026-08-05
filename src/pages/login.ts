@@ -1,5 +1,5 @@
 import type { APIRoute, AstroCookies } from "astro";
-import { BACKEND_URL, SITE_ROOT } from "astro:env/client";
+const { BACKEND_URL, SITE_ROOT } = process.env;
 import { randomBytes, createHash } from "crypto";
 
 const { MCAUTH_CLIENT_ID, MCAUTH_CLIENT_SECRET } = process.env;
@@ -59,7 +59,6 @@ export const GET: APIRoute = async ({ url, cookies, redirect, request }) => {
     body: JSON.stringify(mcAuthPostRequestBody),
   });
   const backendResponseBody = await backendResponse.json();
-  console.log(backendResponseBody);
 
   if (
     backendResponseBody.success == false ||

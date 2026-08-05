@@ -1,21 +1,22 @@
 {
   "name": "WWLC",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "engines": {
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
+    "dev": "dotenvx run -- astro dev",
+    "build": "dotenvx run -- astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "start": "node dist/server/entry.mjs"
+    "start": "dotenvx run -- node dist/server/entry.mjs"
   },
   "dependencies": {
     "@astrojs/node": "^11.0.3",
     "@astrojs/react": "^6.0.2",
     "@astrojs/svelte": "^9.0.1",
+    "@dotenvx/dotenvx": "^2.19.2",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",

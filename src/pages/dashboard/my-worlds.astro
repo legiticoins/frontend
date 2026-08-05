@@ -2,9 +2,14 @@
 import Layout from "../../layouts/Dashboard.astro"
 import WorldsAstroComponent from "../../components/UI/Dashboard/Svelte/Worlds.svelte"
 
-const cookies = Astro.cookies;
+const data = {
+     authToken: Astro.cookies.get("authorization.token")?.value,
+     userUUID: Astro.cookies.get("profile.uuid")?.value.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5'),
+};
+
+console.log(data)
 
 ---
 <Layout title="My Worlds">
-     <WorldsAstroComponent client:idle cookies/>
+     <WorldsAstroComponent client:idle data={data}/>
 </Layout>

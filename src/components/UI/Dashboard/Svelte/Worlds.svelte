@@ -2,9 +2,8 @@
 
      // Widgets
      import WorldWidget from "./Widgets/Worlds.svelte"
-     import type { AstroCookies } from "astro";
      
-     const { cookies } = $props();
+     const { data } = $props();
 
      interface IWorldData {
           uuid: string,
@@ -12,7 +11,7 @@
      }
      const worlds: IWorldData[] = $state([])
      
-     console.log(cookies)
+     $inspect(data)
 
 </script>
 

@@ -1,0 +1,14 @@
+---
+import Layout from "../../layouts/Dashboard.astro";
+import TransactionAstroComponent from "../../components/UI/Dashboard/Svelte/Transactions.svelte"
+
+const data = {
+     authToken: Astro.cookies.get("authorization.token")?.value,
+     userUUID: Astro.cookies.get("profile.uuid")?.value.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5'),
+};
+
+const title = "Transactions"
+---
+<Layout title={title}>
+     <TransactionAstroComponent client:idle title={title} data={data} />
+</Layout>

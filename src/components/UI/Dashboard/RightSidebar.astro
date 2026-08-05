@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+          <!-- LEFT SIDEBAR -->
+     <div class="right-sidebar hidden md:flex flex-col gap-5">
+          <!-- World -->
+          <div class="mt-5">
+               <!-- <div class="py-1">
+                    <h1>Worlds</h1>
+               </div>
+                -->
+               <ul class="flex flex-col gap-2">
+                    <a href="/dashboard/my-worlds" class="flex items-center gap-x-2 p-1 dark:hover:bg-main-light/10 hover:bg-main-dark/10 duration-300 hover:cursor-pointer rounded-ui">
+                         <span class="text-2xl"><Icon name="world" /></span>
+                         Your Worlds
+                    </a>
+                    <a href="/dashboard/my-jobs" class="flex items-center gap-x-2 p-1 dark:hover:bg-main-light/10 hover:bg-main-dark/10 duration-300 hover:cursor-pointer rounded-ui">
+                         <span class="text-2xl"><Icon name="apps" /></span>
+                         Your Job
+                    </a>
+                    <a href="/dashboard/create-job" class="flex items-center gap-x-2 p-1 dark:hover:bg-main-light/10 hover:bg-main-dark/10 duration-300 hover:cursor-pointer rounded-ui">
+                         <span class="text-2xl"><Icon name="plus" /></span>
+                         Create New Job
+                    </a>
+               </ul>
+          </div>
+          <div class="h-0 justify-self-center flex dark:border-b-white/40 border-b-black/40 border-b my-2 mx-auto w-[90%]"></div>     
+
+     </div>

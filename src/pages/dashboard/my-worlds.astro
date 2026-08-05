@@ -1,18 +1,7 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
-
-// Widgets
-import WorldWidget from "../../components/UI/Dashboard/Widgets/Worlds.astro"
-
+import WorldsAstroComponent from "../../components/UI/Dashboard/Svelte/Worlds.svelte"
 ---
 <Layout title="My Worlds">
-     <div class="w-full md:px-5 font-ui">
-
-          <h1 class="text-mobile-title mb-5">My Worlds</h1>
-          <!-- WORLDS Div -->
-          <div class="max-h-150 h-full w-full flex flex-wrap content-start gap-2">
-               <WorldWidget />
-          </div>
-
-     </div>
+     <WorldsAstroComponent client:idle/>
 </Layout>

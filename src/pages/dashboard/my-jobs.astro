@@ -1,14 +1,10 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
+import JobsAstroComponent from "../../components/UI/Dashboard/Svelte/Jobs.svelte"
 
 const title = "My Jobs"
+
 ---
 <Layout title={title}>
-     <div class="w-full md:px-5 font-ui">
-
-     <h1 class="text-mobile-title mb-5">{title}</h1>
-          <div class="max-h-150 h-full w-full flex flex-wrap content-start gap-2">
-          </div>
-
-     </div>
+     <JobsAstroComponent client:idle />
 </Layout>

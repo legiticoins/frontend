@@ -1,14 +1,9 @@
 ---
-import Layout from "../../layouts/Dashboard.astro"
+import Layout from "../../layouts/Dashboard.astro";
+import TransactionAstroComponent from "../../components/UI/Dashboard/Svelte/Transactions.svelte"
 
 const title = "Transactions"
 ---
 <Layout title={title}>
-     <div class="w-full md:px-5 font-ui">
-
-     <h1 class="text-mobile-title mb-5">{title}</h1>
-          <div class="max-h-150 h-full w-full flex flex-wrap content-start gap-2">
-          </div>
-
-     </div>
+     <TransactionAstroComponent client:idle title={title} />
 </Layout>

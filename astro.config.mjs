@@ -36,7 +36,7 @@ export default defineConfig({
       BACKEND_URL: envField.string({
         context: "client",
         access: "public",
-        default: "https://api.wwlc.legiti.dev",
+        default: "https://wwlc.legiti.dev/api",
       }),
       MCAUTH_CLIENT_ID: envField.string({
         context: "server",

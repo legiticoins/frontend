@@ -4,7 +4,6 @@ import { defineConfig, envField } from "astro/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import svelte from "@astrojs/svelte";
-
 import icon from "astro-icon";
 import node from "@astrojs/node";
 
@@ -12,7 +11,7 @@ import node from "@astrojs/node";
 export default defineConfig({
   prefetch: true,
   vite: {
-    plugins: [tailwindcss()],
+    plugins: [tailwindcss()]
   },
 
   integrations: [react(), svelte(), icon({ iconDir: "src/assets/icons" })],

@@ -1,7 +1,8 @@
 import type { APIRoute, AstroCookies } from "astro";
-import { MCAUTH_CLIENT_ID, MCAUTH_CLIENT_SECRET } from "astro:env/server";
 import { BACKEND_URL, SITE_ROOT } from "astro:env/client";
 import { randomBytes, createHash } from "crypto";
+
+const { MCAUTH_CLIENT_ID, MCAUTH_CLIENT_SECRET } = process.env
 
 const REDIRECT_URI = `${SITE_ROOT}/login`;
 
@@ -37,7 +38,7 @@ export const GET: APIRoute = async ({ url, cookies, redirect, request }) => {
       maxAge: 600,
     });
     const authUrl = new URL("https://mc-auth.com/oAuth2/authorize");
-    authUrl.searchParams.append("client_id", MCAUTH_CLIENT_ID);
+    authUrl.searchParams.append("client_id", MCAUTH_CLIENT_ID!);
     authUrl.searchParams.append("redirect_uri", REDIRECT_URI);
     authUrl.searchParams.append("scope", "profile");
     authUrl.searchParams.append("response_type", "code");

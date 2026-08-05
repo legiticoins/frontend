@@ -1,6 +1,10 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
----
-<Layout title="My Worlds">
 
+const title = "Wallet"
+---
+<Layout title={title}>
+     <div class="w-full md:px-5 font-ui">
+          <h1 class="text-mobile-title mb-5">{title}</h1>
+     </div>
 </Layout>

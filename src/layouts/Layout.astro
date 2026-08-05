@@ -17,7 +17,6 @@ const { title = "WWLC"} = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		<ClientRouter />
-		
 		<script is:inline>
 			const t = localStorage.getItem('theme');
 			if (t === "dark" || t === "light") {

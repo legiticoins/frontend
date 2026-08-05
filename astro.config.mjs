@@ -41,10 +41,12 @@ export default defineConfig({
       MCAUTH_CLIENT_ID: envField.string({
         context: "server",
         access: "public",
+        default: ""
       }),
       MCAUTH_CLIENT_SECRET: envField.string({
         context: "server",
         access: "secret",
+        default: ""
       }),
     },
   },

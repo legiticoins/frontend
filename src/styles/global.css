@@ -49,6 +49,7 @@
           @apply relative;
           @apply bg-gradient-main-light dark:bg-gradient-main-dark;
           @apply text-main-dark dark:text-main-light;
+          @apply bg-neutral-950;
      }
 
      .dashboard {

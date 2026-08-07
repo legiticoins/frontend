@@ -18,12 +18,6 @@
           } catch (e) {
                console.log(e)
           }
-
-          if (responseData && responseData.success === true) {
-               console.log(success)
-          } else {
-               console.log(success)
-          }
      })
 </script>
 

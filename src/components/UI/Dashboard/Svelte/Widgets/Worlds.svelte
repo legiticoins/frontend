@@ -2,15 +2,16 @@
 
 <script>
      import { onMount } from "svelte";
-     const { world, type, data } = $props();
+     const { world, type, data = {} } = $props();
      
      // World Icons HREF:
      // const string = `https://raw.githubusercontent.com/jacobsjo/mcicons/refs/heads/icons/item/`
 
      let createJobHref = $state("")
-     onMount(() => {
+     onMount(async () => {
+          
           if (world.wwlc) {
-               createJobHref = `/dashboard/create-job?uuid=${world.wwlc.token}`
+               createJobHref = `/dashboard/create-job?uuid=${world.wwlc.uuid}&worldToken=${world.wwlc.token}`
           }
      })
 
@@ -30,7 +31,7 @@
                     }
                })
                responseData = await response.json()
-               console.log(responseData)
+               // console.log(responseData)
           } catch (error) {
                console.log(error)
           }
@@ -48,7 +49,8 @@
      <img src="../../../../../../../src/assets/icons/block.svg" alt="placeholder" class="invert-0 dark:invert opacity-50 size-20 w-full justify-self-center">
      <div class="bottom-0 absolute p-2 duration-300 h-full flex flex-col justify-center w-full group-hover:opacity-100 opacity-100 md:opacity-0 backdrop-blur-[10px]">
           <h1 class="font-handwritten px-2 text-[150%] max-w-100 w-full text-center">{world.name}</h1>
-          <div class="absolute bottom-0 left-0 w-full p-2 m-auto hover:bg-black/90 ">
+          {#if type !== "none"}
+          <div class="absolute bottom-0 left-0 w-full p-2 m-auto hover:scale-102 hover:bg-black/60 duration-300 ">
                {#if type === "approved"}
                     <div class="flex gap-1">
                          <a title="Create Job" href={createJobHref} class="hover:bg-neutral-950/40 duration-100 rounded-ui">
@@ -66,6 +68,8 @@
                {/if}
                
           </div>
+          {/if}
+          
      </div>
 </main>
 

@@ -9,7 +9,6 @@
      const approvedWorlds= $state([])
      const unapprovedWorlds= $state([])
 
-
      let worldsData = $state([]);
 
      onMount( async () => {
@@ -27,7 +26,7 @@
                })
                const responseData = await response.json()
                if (responseData.success === true) {
-                    approvedWorlds.wwlc = response
+                    world.wwlc = responseData
                     approvedWorlds.push(world)
                } else {
                     unapprovedWorlds.push(world)

@@ -4,7 +4,13 @@ import JobsSvelteComponent from "../../components/UI/Dashboard/Svelte/Jobs.svelt
 
 const title = "My Jobs"
 
+
+const data = {
+     authToken : Astro.cookies.get("authorization.token")?.value,
+     userUUID : Astro.cookies.get("profile.uuid")?.value,
+}
+
 ---
 <Layout title={title}>
-     <JobsSvelteComponent client:idle />
+     <JobsSvelteComponent client:idle cookies={data} />
 </Layout>

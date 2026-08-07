@@ -11,22 +11,25 @@
                status = "UUID cannot be empty."
                return
           }
+          let responseData;
           try {
                const response = await fetch(`https://wwlc.legiti.dev/api/world/verify/${uuid}`, {
                     method: 'POST',
                     headers: {
                          'Authorization': `Bearer ${cookies.authToken}`
                     }
-               }).then(async response => response.json())
+               })
+               responseData = await response.json()
+               console.log(responseData)
           } catch (error) {
                status = "World couldn't be verified."
                console.log(error)
           }
 
-          if (response && response.success === true) {
+          if (responseData && responseData.success === true) {
                status = 'World has been Verified!'
           } else {
-               status = "World couldn't be verified."
+               status = responseData.error
           }
      }
      

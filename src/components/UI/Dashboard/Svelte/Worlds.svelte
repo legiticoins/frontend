@@ -24,8 +24,9 @@
                     headers: {
                          Authorization: `Bearer ${data.authToken}`
                     }
-               }).then(async response => response.json())
-               if (response.success === "true") {
+               })
+               const responseData = await response.json()
+               if (responseData.success === true) {
                     approvedWorlds.wwlc = response
                     approvedWorlds.push(world)
                } else {
@@ -44,13 +45,13 @@
 <div class="w-full md:px-5 font-ui">
      <h1 class="text-mobile-title mb-5">My Worlds</h1>
 
-     <details class="my-5 p-2 rounded-ui border-red-600 border bg-red-700/40 hover:cursor-pointer max-w-100">
-          <summary>Your worlds must first be approved by the admins at LegitiDevs to start creating jobs.</summary>
-
-          <h1 class="text-mobile-title my-5">World Approval</h1>
-          <p>To prevent people from abusing the system and create worlds that either farm legiticoins or donate them, an approval system has been put in place.</p>
-
-     </details>
+     {#if approvedWorlds.length === 0}
+          <details class="my-5 p-2 rounded-ui border-red-600 border bg-red-700/40 hover:cursor-pointer max-w-100">
+               <summary>Your worlds must first be approved by the admins at LegitiDevs to start creating jobs.</summary>
+               <h1 class="text-mobile-title my-5">World Approval</h1>
+               <p>To prevent people from abusing the system and create worlds that either farm legiticoins or donate them, an approval system has been put in place.</p>
+          </details>
+     {/if}
 
      <!-- WORLDS Div -->
      <div class="max-h-150 h-full w-full flex flex-col gap-2">

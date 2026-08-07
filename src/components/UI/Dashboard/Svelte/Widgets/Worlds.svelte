@@ -16,17 +16,21 @@
 
      async function submitForApproval(UUID, NAME) {
           console.log(UUID, NAME)
+          let responseData;
           try {
                const response = await fetch(`https://wwlc.legiti.dev/api/world/create`, {
-                    method: 'POST',
-                    body: {
+                    method: "POST",
+                    body: JSON.stringify({
                          uuid: UUID,
                          name: NAME
-                    },
+                    }),
                     headers: {
-                         'Authorization': `Bearer ${data.authToken}`
+                         "Content-Type": "application/json",
+                         "Authorization": `Bearer ${data.authToken}`
                     }
-               }).then(async response => await response.json())
+               })
+               responseData = await response.json()
+               console.log(responseData)
           } catch (error) {
                console.log(error)
           }

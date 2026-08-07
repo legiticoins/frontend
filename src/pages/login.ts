@@ -72,11 +72,20 @@ export const GET: APIRoute = async ({ url, cookies, redirect, request }) => {
 
   const { token, uuid } = backendResponseBody;
 
-  cookies.set("authorization.token", token, { path: "/" });
-  cookies.set("profile.uuid", uuid, { path: "/" });
+  cookies.set("authorization.token", token, {
+    path: "/",
+    sameSite: "strict",
+    maxAge: 31536000,
+  });
+  cookies.set("profile.uuid", uuid, {
+    path: "/",
+    sameSite: "strict",
+    maxAge: 31536000,
+  });
 
   const redirectBack = cookies.get("oauth.redirect")?.value ?? "/";
   cookies.delete("oauth.redirect");
+  cookies.delete("oauth.state");
 
   return redirect(redirectBack, 302);
 };

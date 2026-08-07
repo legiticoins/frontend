@@ -1,4 +1,4 @@
-<script lang=ts>
+<script>
      import { onMount } from "svelte";
 
      // Widgets
@@ -6,11 +6,11 @@
 
      const { data, image } = $props();
 
-     const approvedWorlds= $state<any[]>([])
-     const unapprovedWorlds= $state<any[]>([])
+     const approvedWorlds= $state([])
+     const unapprovedWorlds= $state([])
 
 
-     let worldsData= $state<any[]>([]);
+     let worldsData = $state([]);
 
      onMount( async () => {
           const apiString = `https://api.legiti.dev/owner/${data.userUUID}`
@@ -19,13 +19,14 @@
           worldsData = await fetch(apiString).then(async response => await response.json())
 
           // Sort by Approved / UnApproved.
-          worldsData.forEach(async (world: any) => {
+          worldsData.forEach(async (world) => {
                const response = await fetch(`https://wwlc.legiti.dev/api/world/${world.world_uuid.split("-").join("")}`, {
                     headers: {
                          Authorization: `Bearer ${data.authToken}`
                     }
                }).then(async response => response.json())
                if (response.success === "true") {
+                    approvedWorlds.wwlc = response
                     approvedWorlds.push(world)
                } else {
                     unapprovedWorlds.push(world)
@@ -61,11 +62,11 @@
                <p class="opacity-40">You aren't logged in.</p>
           {:else}
                {#if approvedWorlds.length !== 0}
-                    <p class="text-3xl">Approved Worlds</p>
+                    <p class="">Approved Worlds</p>
                     <div class="flex gap-2 flex-wrap content-start">
 
                          {#each approvedWorlds as world}
-                         <WorldWidget image={image} world={world} />
+                              <WorldWidget data={data} world={world} type="approved" />
                          {/each}
                     </div>
                {/if}
@@ -73,9 +74,10 @@
 
 
 
+          <h1>Unapproved Worlds</h1>
           <div class="flex gap-2 flex-wrap content-start">
                {#each unapprovedWorlds as world}
-                    <WorldWidget image={image} world={world} />
+                    <WorldWidget data={data} world={world} />
                {/each}
           </div>
 

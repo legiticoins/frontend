@@ -1,7 +1,25 @@
 ---
-import Layout from "../../layouts/Dashboard.astro"
+export const prerender = false;
+import Layout from "../../../layouts/Dashboard.astro"
+
+const worldTokenParam = Astro.url.searchParams.get('worldToken')
 
 const title = "Create a Job"
+
+let name, type, amount, world_token, id;
+
+// Make Post Request
+function createJob() {
+     const body = {
+          name,
+          type: "sell",
+          amount,
+          world_token
+     }
+}
+
+
+
 ---
 <Layout title={title}>
      <div class="w-full md:px-5 font-ui">
@@ -24,8 +42,9 @@ const title = "Create a Job"
 
                     <!-- Job Name -->
                     <label class="flex flex-col">
-                         Enter World UUID
-                         <input class="bg-black/20 dark:bg-white/20 rounded-ui p-2 text-black dark:text-white" type="text">
+                         Enter World Token
+                         <p class="text-[13px] opacity-50 italic">Don't know your world token? Click '+' from Your Worlds tab.</p>
+                         <input value={worldTokenParam} class="bg-black/20 dark:bg-white/20 rounded-ui p-2 text-black dark:text-white" type="text">
                     </label>
                
                     <div class="my-2">
@@ -33,6 +52,9 @@ const title = "Create a Job"
                     </div>
                </form>
           </div>
-
      </div>
 </Layout>
+
+<style is:global>
+     @import '../../../styles/global.css'
+</style>

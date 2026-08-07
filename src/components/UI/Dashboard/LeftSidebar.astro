@@ -1,9 +1,16 @@
 ---
 import { Icon } from "astro-icon/components";
+import VerifyWorlds from './Svelte/Widgets/VerifyWorlds.svelte'
+
+const data = {
+     authToken: Astro.cookies.get("authorization.token")?.value,
+     userUUID: Astro.cookies.get("profile.uuid")?.value,
+}
+
 ---
 
           <!-- LEFT SIDEBAR -->
-     <div class="left-sidebar hidden md:flex flex-col gap-5">
+     <div class="left-sidebar hidden md:flex flex-col gap-5 h-full">
           <!-- World -->
           <div class="mt-5">
                <!-- <div class="py-1">
@@ -57,5 +64,14 @@ import { Icon } from "astro-icon/components";
                          Terms of Use
                     </a>
                </ul>
+
+
           </div>
-     </div>
+          
+          <div class="absolute bottom-10">
+               <ul class="flex gap-2 items-center w-full p-1 dark:hover:bg-red-500/10 hover:bg-main-dark/10 duration-300 hover:cursor-pointer rounded-ui">
+                    <span class="text-2xl"><Icon name="world" /></span>
+                    <VerifyWorlds client:idle cookies={data}/>
+               </ul>
+          </div>
+</div>

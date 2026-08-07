@@ -27,7 +27,11 @@
                const responseData = await response.json()
                if (responseData.success === true) {
                     world.wwlc = responseData
-                    approvedWorlds.push(world)
+                    if (responseData.verified) {
+                      approvedWorlds.push(world)
+                    } else {
+                      unapprovedWorlds.push(world)
+                    }
                } else {
                     unapprovedWorlds.push(world)
                }
@@ -83,5 +87,3 @@
 
      </div>
 </div>
-
-

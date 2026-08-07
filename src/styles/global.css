@@ -96,6 +96,30 @@
           @apply border border-white/30 backdrop-blur-2xl shadow-xl/30;
      }
 
+     .docs {
+          @apply px-5;
+          @apply font-ui;
+          @apply flex flex-col;
+          h1 {
+               @apply text-mobile-title;
+               @apply font-wordmark font-bold;
+               @apply py-10;
+          }
+
+          a {
+               @apply hover:underline;
+          }
+
+          p {
+               @apply text-[18px];
+               @apply py-1;
+          }
+
+          ul, li {
+               @apply px-5;
+               @apply text-[15px];
+          }
+     }     
 }
 
 /* FONTS */

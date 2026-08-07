@@ -1,40 +1,56 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { ClientRouter } from 'astro:transitions';
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { ClientRouter } from "astro:transitions";
 
-const { title = "WWLC"} = Astro.props;
+const { title = "WWLC" } = Astro.props;
 ---
 
-
 <html lang="en" data-theme="dark" id="html" class="transition-none">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		
-		<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-		<meta name="apple-mobile-web-app-title" content="WWLC" />
-		<link rel="manifest" href="/site.webmanifest" />
-		
-		<title>{title}</title>
-		<ClientRouter />
-		<script is:inline>
-     	 (function () {
-     	   const saved = localStorage.getItem("theme");
-     	   const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-     	   document.documentElement.setAttribute("data-theme", theme);
-     	 })();
-    		</script>
-	
-	</head>
-	<body class="page">
-		<Header />
-		<slot />
-		<Footer />
-	</body>
+     <head>
+          <meta charset="utf-8" />
+          <meta name="viewport" content="width=device-width" />
+          <meta name="generator" content={Astro.generator} />
+
+          <link
+               rel="icon"
+               type="image/png"
+               href="/favicon-96x96.png"
+               sizes="96x96"
+          />
+          <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+          <link rel="shortcut icon" href="/favicon.ico" />
+          <link
+               rel="apple-touch-icon"
+               sizes="180x180"
+               href="/apple-touch-icon.png"
+          />
+          <meta name="apple-mobile-web-app-title" content="WWLC" />
+          <link rel="manifest" href="/site.webmanifest" />
+
+          <title>{title}</title>
+          <ClientRouter />
+          <script is:inline>
+               (function () {
+                    const saved = localStorage.getItem("theme");
+                    const theme =
+                         saved ||
+                         (window.matchMedia("(prefers-color-scheme: dark)")
+                              .matches
+                              ? "dark"
+                              : "light");
+                    document.documentElement.setAttribute("data-theme", theme);
+               })();
+          </script>
+     </head>
+     <style is:global>
+          @import "../styles/global.css";
+     </style>
+
+     <body class="page">
+          <Header />
+          <slot />
+          <Footer />
+     </body>
 </html>

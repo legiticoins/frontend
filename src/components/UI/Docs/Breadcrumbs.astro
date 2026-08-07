@@ -1,0 +1,18 @@
+---
+
+interface ICrumb {
+     title: string,
+     href: string
+}
+
+const { crumbs } = Astro.props;
+
+---
+
+<div class="mx-5 breadcrumbs capitalize text-[20px] font-bold font-ui rounded-ui">
+  <ul>
+       {crumbs.map((crumb: ICrumb) => (
+          <li><a href={crumb.href}>{crumb.title}</a></li>
+       ))}
+  </ul>
+</div>

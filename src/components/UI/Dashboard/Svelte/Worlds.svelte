@@ -31,6 +31,11 @@
                     unapprovedWorlds.push(world)
                }
           })
+
+          if(approvedWorlds.length !== 0) {
+               // Sort Worlds so they aren't randomly positioned.
+               approvedWorlds.sort()
+          }
      })
 
 </script>
@@ -76,3 +81,5 @@
 
      </div>
 </div>
+
+

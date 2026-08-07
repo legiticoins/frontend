@@ -1,0 +1,43 @@
+---
+import path from "path";
+import fs from "fs/promises";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+
+import Layout from "../../layouts/Dashboard.astro";
+import BreadcrumbsAstroComponent from "../../components/UI/Docs/Breadcrumbs.astro";
+
+const crumbs = [{ title: "Docs", href: "/docs" }];
+
+// Parse docs.md
+let parsedMD, purifiedMD;
+
+try {
+     parsedMD = marked
+          .parse(
+               await fs.readFile(
+                    path.join(
+                         import.meta.filename,
+                         "../../../",
+                         "texts/docs.md",
+                    ),
+                    "utf-8",
+               ),
+          )
+          .toString();
+     // purifiedMD = DOMPurify.sanitize(parsedMD);
+} catch (e) {
+     console.log(e);
+}
+---
+
+<Layout title="Docs">
+     <div class="flex flex-col">
+          <div class="">
+               <BreadcrumbsAstroComponent crumbs={crumbs} />
+          </div>
+
+          <!-- Parsed -->
+          <div set:html={parsedMD} class="mx-5 docs" />
+     </div>
+</Layout>

@@ -15,6 +15,10 @@
           --background-image-gradient-main-light: linear-gradient(180deg,rgba(242, 242, 242, 1) 50%, rgba(181, 181, 181, 1) 100%);
           --background-image-gradient-main-dark: linear-gradient(180deg,rgba(23, 23, 23, 1) 50%, rgba(18, 18, 18, 1) 100%);
 
+          /* IMAGES */
+          --background-image-dark: url("src/assets/images/background/darkmode.jpg");
+          --background-image-light: url("src/assets/images/background/whitemode.jpg");
+          
           /* Primary */
           --color-primary-light: #EBEBEB;
           --color-primary-dark: #121212;
@@ -27,7 +31,7 @@
           --color-tertiary-dark: #292929;
 
      /* FONTS */
-     --font-wordmark: 'Sekuya Regular';
+     --font-wordmark: 'North Point';
      --font-motto: 'Prompt';
      --font-handwritten: 'Indie Flower';
      --font-ui: 'Google Sans';
@@ -44,11 +48,12 @@
 
      /* Page Background */
      .page {
-          @apply w-screen h-screen;
+          @apply w-full min-h-screen h-full;
+          @apply flex flex-col gap-0;
           @apply m-0;
-          @apply relative;
           @apply bg-gradient-main-light dark:bg-gradient-main-dark;
           @apply text-main-dark dark:text-main-light;
+          @apply bg-neutral-950;
      }
 
      .dashboard {
@@ -95,6 +100,30 @@
           @apply border border-white/30 backdrop-blur-2xl shadow-xl/30;
      }
 
+     .docs {
+          @apply px-5;
+          @apply font-ui;
+          @apply flex flex-col;
+          h1 {
+               @apply text-mobile-title;
+               @apply font-wordmark font-bold;
+               @apply py-10;
+          }
+
+          a {
+               @apply hover:underline;
+          }
+
+          p {
+               @apply text-[18px];
+               @apply py-1;
+          }
+
+          ul, li {
+               @apply px-5;
+               @apply text-[15px];
+          }
+     }     
 }
 
 /* FONTS */
@@ -113,4 +142,8 @@
 @font-face {
      font-family: 'Indie Flower';
      src: url('../assets/font/handwritten/IndieFlower-Regular.ttf');
+}
+@font-face {
+     font-family: 'North Point';
+     src: url('../assets/font/text/North point.ttf');
 }

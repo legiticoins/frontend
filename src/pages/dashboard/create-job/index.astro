@@ -1,0 +1,23 @@
+---
+export const prerender = false;
+import CreateJobsPageAstroComponent from "../../../components/UI/Dashboard/Svelte/CreateJobsPage.svelte";
+import Layout from "../../../layouts/Dashboard.astro"
+
+let world_token, uuidParam = "";
+let cookies = { authToken: Astro.cookies.get("authorization.token")?.value, userUUID: Astro.cookies.get("profile.uuid")?.value}
+world_token = Astro.url.searchParams.get('worldToken') || ""
+uuidParam = Astro.url.searchParams.get('uuid') || ""
+
+const title = "Create a Job"
+
+---
+<Layout title={title}>
+     <div class="w-full md:px-5 font-ui ">
+          <h1 class="text-mobile-title mb-5">{title}</h1>
+          <CreateJobsPageAstroComponent client:load world_token={world_token} uuid={uuidParam} cookies={cookies}/>
+     </div>
+</Layout>
+
+<style is:global>
+     @import '../../../styles/global.css'
+</style>

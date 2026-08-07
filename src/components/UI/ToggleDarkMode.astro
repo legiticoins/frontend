@@ -29,39 +29,28 @@
 
 <script>
 function getPreferredTheme() {
-    const saved = localStorage.getItem("theme");
-    if (saved) return saved;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-  }
+  const saved = localStorage.getItem("theme");
+  if (saved) return saved;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+}
 
-  function applyTheme(theme: string, doc = document) {
-    doc.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }
+function applyTheme(theme: string, doc = document) {
+  doc.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("theme", theme);
+}
 
-  function syncToggle() {
-    const toggle = document.getElementById("theme-toggle") as HTMLInputElement | null;
-    if (!toggle) return;
+function syncToggle() {
+  const toggle = document.getElementById("theme-toggle") as HTMLInputElement | null;
+  if (!toggle) return;
+  toggle.checked = getPreferredTheme() === "dark";
+  toggle.onchange = () => applyTheme(toggle.checked ? "dark" : "light");
+}
 
-    const theme = getPreferredTheme();
-    toggle.checked = theme === "dark";
+syncToggle(); // no need to applyTheme here, head script already did it
 
-    // Avoid duplicate listeners
-    toggle.onchange = () => {
-      const next = toggle.checked ? "dark" : "light";
-      applyTheme(next);
-    };
-  }
-
-  // Initial load
-  applyTheme(getPreferredTheme());
-  syncToggle();
-
-  // Critical for ClientRouter
-  document.addEventListener("astro:before-swap", (e) => {
-    applyTheme(getPreferredTheme(), e.newDocument);
-  });
-
-  document.addEventListener("astro:after-swap", syncToggle);
-  document.addEventListener("astro:page-load", syncToggle);
+document.addEventListener("astro:before-swap", (e) => {
+  applyTheme(getPreferredTheme(), e.newDocument);
+});
+document.addEventListener("astro:after-swap", syncToggle);
+document.addEventListener("astro:page-load", syncToggle);
 </script>

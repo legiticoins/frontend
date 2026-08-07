@@ -18,17 +18,22 @@
     "@astrojs/svelte": "^9.0.1",
     "@dotenvx/dotenvx": "^2.19.2",
     "@tailwindcss/vite": "^4.3.3",
+    "@types/marked": "^6.0.0",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "astro": "^7.1.6",
     "astro-icon": "^1.1.5",
+    "dompurify": "^3.4.13",
+    "marked": "^18.0.9",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "svelte": "^5.56.8",
     "tailwindcss": "^4.3.3",
-    "typescript": "^6.0.3"
+    "typescript-cookie": "^1.0.6"
   },
   "devDependencies": {
-    "daisyui": "^5.7.14"
+    "@tailwindcss/language-server": "^0.16.0",
+    "daisyui": "^5.7.14",
+    "typescript": "^6.0.3"
   }
 }

@@ -15,14 +15,20 @@ const loggedIn = await isLoggedIn(cookies)
      
      <li>
           <!-- Job -->
-          <a href="/dashboard" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
+          <a href="/dashboard/my-worlds" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
+               <div class="text-2xl">
+                    <Icon name="world"/>
+               </div>
+               My Worlds
+          </a>          <!-- Job -->
+          <a href="/dashboard/my-jobs" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="apps"/>
                </div>
                My Jobs
           </a>
           <!-- Create New Job -->
-          <a href="/create-job" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
+          <a href="/dashboard/create-job" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="plus"/>
                </div>
@@ -42,7 +48,7 @@ const loggedIn = await isLoggedIn(cookies)
      </li>
      <!-- Profile -->
      <li>
-          <a href="/transactions" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
+          <a href="/dashboard/transactions" class="flex text-[13px] items-center hover:bg-black/10 hover:dark:bg-white/10"> 
                <div class="text-2xl">
                     <Icon name="transactions"/>
                </div>

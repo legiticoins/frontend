@@ -1,0 +1,52 @@
+---
+export const prerender = false;
+import fs, { readFile } from "fs/promises";
+import { marked } from "marked";
+import DOMPurify from "dompurify";
+import path from "path";
+
+import Layout from "../../../layouts/Dashboard.astro";
+import Breadcrumbs from "../../../components/UI/Docs/Breadcrumbs.astro";
+
+const { title } = Astro.params;
+// console.log(title)
+// Get .MD File Contents
+const titleString = title?.split("-").join(" ");
+
+let parsedMD;
+let purifiedMD;
+
+try {
+     parsedMD = marked
+          .parse(
+               await readFile(
+                    path.join(
+                         import.meta.filename,
+                         "../../../..",
+                         `texts/docs/${title}.md`,
+                    ),
+                    "utf-8",
+               ),
+          )
+          .toString();
+     purifiedMD = DOMPurify.sanitize(parsedMD);
+} catch (e) {
+     console.log(e);
+}
+
+const crumbs = [
+     { title: "Docs", href: "/docs" },
+     { title: titleString, href: "/docs" },
+];
+---
+
+<Layout title={title}>
+     <div class="flex flex-col">
+          <div class="">
+               <Breadcrumbs crumbs={crumbs} />
+          </div>
+
+          <!-- Parsed -->
+          <div set:html={parsedMD} class="mx-5 docs" />
+     </div>
+</Layout>

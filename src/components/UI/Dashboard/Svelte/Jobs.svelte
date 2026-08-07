@@ -8,21 +8,21 @@
 
      // Widgets
      import JobWidget from "./Widgets/Jobs.svelte"
-     import { onMount } from "svelte"
-     
+     import { onMount, untrack } from "svelte"
+
      let { cookies } = $props()
-     
+
      let approvedWWLCWorlds = $state([])
      let approvedUserWorlds = $state([])
-     let jobsArray = $state([])
-     
+     let jobsArray = $derived(approvedWWLCWorlds.filter((w) => w.jobs && w.jobs.length > 0).map((w) => w.jobs));
+
      onMount(async () => {
           try {
                // 1. GET LIST OF ALL WORLDS BY PLAYER
                let user_uuid = cookies.userUUID;
                const userWorldsFetch = await fetch(`https://api.legiti.dev/owner/${user_uuid}`);
                const userWorlds = await userWorldsFetch.json()
-               
+
                // 2. ITERATE THROUGH ALL WITH WWLC API AND ONLY SELECT APPROVED WORLDS
                userWorlds.forEach(async (world) => {
                     const wwlcWorldFetch = await fetch(`https://wwlc.legiti.dev/api/world/${world.world_uuid}`, {
@@ -38,29 +38,14 @@
                     }
                })
 
-               // 3. ITERATE THROUGH THE JOBS ARRAY.
-               if (approvedWWLCWorlds.length > 0) {
-                    approvedWWLCWorlds.forEach(async (wwlcWorld) => {
 
-                         // if
-                         // approvedWWLCWorlds looks like [ {}, {}, {}]
-                         // jobsArray looks like [ [], [], []]
-                         // where first element of both arrays are related.
-                         if (wwlcWorld.jobs) {
-                              jobsArray.push(wwlcWorld.jobs);
-                         }
-                         
-                    });
-               }
-               
           } catch (error) {
                console.log(error)
           }
-     })
 
-     $inspect(approvedWWLCWorlds)
-     $inspect(approvedUserWorlds)
+     })
      
+
 </script>
 
 <div class="w-full md:px-5 font-ui">
@@ -72,15 +57,16 @@
           <p class="opacity-30">Your created jobs appear here.</p>
           {:else}
                {#each approvedWWLCWorlds as world, index}
-                    <h1>{approvedUserWorlds[index]}.name</h1>
-                    {#each jobsArray as job}
-                         <!-- Pass Job Data Onto Widget -->
-                         <JobWidget job={job}/>
-                    {/each}
+                    <div class="p-2 h-full w-full flex flex-col gap-2">
+                         <h1>{world.name}</h1>
+                         <div class="flex gap-1 content-start flex-wrap w-full h-full">
+                              {#each jobsArray[index] as job}
+                                   <JobWidget job={job} />
+                              {/each}
+                         </div>
+                    </div>
                {/each}
           {/if}
-          
+
      </div>
 </div>
-
-

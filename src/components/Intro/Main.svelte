@@ -1,5 +1,11 @@
 <script>
 	let { data } = $props()
+	let authToken = $state(data.authToken)
+
+	$effect(() => {
+	     authToken = data.authToken
+	})
+	
 </script>
 
 <main class="mx-5 h-full rounded-ui flex flex-1 flex-col items-center justify-center">
@@ -10,17 +16,15 @@
 	</div>
 
 	<div class="gap-3 flex flex-col md:flex-row w-full justify-center mt-10">
-		<a
-			href="/login"
-			class="p-3 text-center duration-300 hover:scale-102 font-ui bg-white dark:bg-neutral-900 border min-w-50"
-		>
-			Login
-		</a>
-		<a
-			href="/dashboard/my-worlds"
-			class="p-3 text-center duration-300 hover:scale-102 font-ui bg-white dark:bg-neutral-900 border min-w-50"
-		>
-			Dashboard
-		</a>
+		{#if !authToken}
+		     <a href="/login"
+			   class="p-3 text-center duration-300 hover:scale-102 font-ui bg-white dark:bg-neutral-900 border min-w-50">
+			     Login
+		     </a>
+		{:else}
+		     <a href="/dashboard/my-worlds" class="p-3 text-center duration-300 hover:scale-102 font-ui bg-white dark:bg-neutral-900 border min-w-50">
+                    Dashboard
+		     </a>
+		{/if}
 	</div>
 </main>

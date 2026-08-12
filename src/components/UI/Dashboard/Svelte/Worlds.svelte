@@ -12,8 +12,9 @@
      let worldsData = $state([]);
 
      onMount( async () => {
+          
           const apiString = `https://api.legiti.dev/owner/${data.userUUID}`
-
+          
           // GET ALL WORLDS FROM API.LEGITI.DEV
           worldsData = await fetch(apiString).then(async response => await response.json())
 
@@ -70,7 +71,7 @@
                     <div class="flex gap-2 flex-wrap content-start">
 
                          {#each approvedWorlds as world}
-                              <WorldWidget data={data} world={world} type="approved" />
+                              <WorldWidget data={data} world={world} images={images} type="approved" />
                          {/each}
                     </div>
                {/if}

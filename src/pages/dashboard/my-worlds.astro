@@ -3,6 +3,7 @@ import Layout from "../../layouts/Dashboard.astro"
 import WorldsAstroComponent from "../../components/UI/Dashboard/Svelte/Worlds.svelte"
 import createJobIcon from '../../assets/icons/plus.svg'
 import worldIcon from '../../assets/icons/world.svg'
+import blockIcon from '../../assets/icons/block.svg'
 
 const data = {
      authToken: Astro.cookies.get("authorization.token")?.value,
@@ -11,7 +12,8 @@ const data = {
 
 const images = {
      createJobIcon: createJobIcon.src,
-     worldIcon: worldIcon.src
+     worldIcon: worldIcon.src,
+     blockIcon: blockIcon.src
 }
 
 ---

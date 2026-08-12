@@ -4,6 +4,7 @@ import { Icon } from "astro-icon/components";
 
 import Main from "../components/Intro/Main.svelte";
 
+
 const data = {
      authToken: Astro.cookies.get("authorization.token")?.value,
      userUUID: Astro.cookies.get("profile.uuid")?.value,

@@ -36,6 +36,10 @@
      --font-handwritten: 'Indie Flower';
      --font-ui: 'Google Sans';
 
+     --font-nexa: 'Nexa';
+     --font-flowers-kingdom: 'Flowers Kingdom';
+     --font-akira: 'Akira';
+     
      /* RADIUS */
      --radius-ui: 10px;
 
@@ -147,4 +151,19 @@
 @font-face {
      font-family: 'North Point';
      src: url('../assets/font/text/North point.ttf');
+}
+
+
+/* DECORATIVE */
+@font-face {
+     font-family: 'Akira';
+     src: url('../assets/font/text/decorative/Akira Expanded Demo.otf');
+}
+@font-face {
+     font-family: 'Flowers Kingdom';
+     src: url('../assets/font/text/decorative/Flowers Kingdom.ttf');
+}
+@font-face {
+     font-family: 'Nexa';
+     src: url('../assets/font/text/decorative/Nexa-Heavy.ttf');
 }

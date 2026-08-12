@@ -4,7 +4,7 @@
 
      const { cookies, title, data, icons } = $props();
      let transactions = $state<any[]>([
-          {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""},
+          // {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""},
      ])
 
      onMount( async () => {

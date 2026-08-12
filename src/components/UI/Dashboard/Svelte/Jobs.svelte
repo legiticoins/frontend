@@ -57,7 +57,7 @@
           <p class="opacity-30">Your created jobs appear here.</p>
           {:else}
                {#each approvedWWLCWorlds as world, index}
-                    <div class="p-3 shrink-0 min-h-20 flex flex-col gap-2 border rounded-ui">
+                    <div class="p-3 shrink-0 min-h-20 flex flex-col gap-2 rounded-ui">
                          <h1>{world.name}</h1>
                          <div class="flex gap-1 h-full content-start flex-wrap w-full">
                               {#each jobsArray[index] as job}

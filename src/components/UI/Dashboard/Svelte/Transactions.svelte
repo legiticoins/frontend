@@ -6,12 +6,13 @@
      let transactions = $state<any[]>([])
 
      onMount( async () => {
-          const userData = await fetch(`https://wwlc.legiti.dev/api/user/${data.userUUID.split("-").join("")}`).then(async response => await response.json())
+       const userData = await fetch(`https://wwlc.legiti.dev/api/user/${data.userUUID.split("-").join("")}`, {headers: {"Authorization": `Bearer ${data.authToken}`}}).then(async response => await response.json())
           if (userData.transactions && userData.transactions.length > 0) {
                transactions = userData.transactions
           }
+          transactions.sort((a, b) => new Date(b.time).getTime() - new Date(a.time).getTime())
      })
-     
+
 </script>
 
 <div class="w-full md:px-5 font-ui">
@@ -28,5 +29,3 @@
      </div>
 
 </div>
-
-

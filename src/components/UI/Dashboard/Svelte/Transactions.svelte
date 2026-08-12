@@ -2,9 +2,9 @@
      import { onMount } from "svelte";
      import Transaction from "./Widgets/Transaction.svelte";
 
-     const { title, data } = $props();
+     const { cookies, title, data, icons } = $props();
      let transactions = $state<any[]>([
-          {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""}
+          {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""},
      ])
 
      onMount( async () => {
@@ -25,10 +25,9 @@
 
      <div class="flex flex-col gap-1">
           {#each transactions as transaction}
-               <Transaction data={transaction}/>
+               <Transaction cookies={data} icons={icons} data={transaction}/>
           {/each}
      </div>
-
 </div>
 
 

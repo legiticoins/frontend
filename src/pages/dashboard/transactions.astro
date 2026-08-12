@@ -1,14 +1,23 @@
 ---
 import Layout from "../../layouts/Dashboard.astro";
 import TransactionAstroComponent from "../../components/UI/Dashboard/Svelte/Transactions.svelte"
+import transactionApproveIcon from "../../assets/icons/approve.svg"
+import transactionRejectIcon from "../../assets/icons/reject.svg"
+import transactionInfoIcon from "../../assets/icons/info.svg"
 
 const data = {
      authToken: Astro.cookies.get("authorization.token")?.value,
      userUUID: Astro.cookies.get("profile.uuid")?.value.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5'),
 };
 
+const icons = {
+     transactionApproveIcon: transactionApproveIcon.src,
+     transactionRejectIcon: transactionRejectIcon.src,
+     transactionInfoIcon: transactionInfoIcon.src,
+}
+
 const title = "Transactions"
 ---
 <Layout title={title}>
-     <TransactionAstroComponent client:idle title={title} data={data} />
+     <TransactionAstroComponent client:load icons={icons} title={title} data={data} />
 </Layout>

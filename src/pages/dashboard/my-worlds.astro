@@ -1,15 +1,20 @@
 ---
 import Layout from "../../layouts/Dashboard.astro"
 import WorldsAstroComponent from "../../components/UI/Dashboard/Svelte/Worlds.svelte"
-import placeholderWorldImage from '../../assets/images/world/placeholder.png'
+import createJobIcon from '../../assets/icons/plus.svg'
+import worldIcon from '../../assets/icons/world.svg'
 
 const data = {
      authToken: Astro.cookies.get("authorization.token")?.value,
      userUUID: Astro.cookies.get("profile.uuid")?.value.replace(/^(.{8})(.{4})(.{4})(.{4})(.{12})$/, '$1-$2-$3-$4-$5'),
 };
 
+const images = {
+     createJobIcon: createJobIcon.src,
+     worldIcon: worldIcon.src
+}
 
 ---
 <Layout title="My Worlds">
-     <WorldsAstroComponent client:load data={data} image={placeholderWorldImage.src}/>
+     <WorldsAstroComponent client:load data={data} images={images}/>
 </Layout>

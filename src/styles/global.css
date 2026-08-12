@@ -63,6 +63,7 @@
           @apply text-main-dark dark:text-main-light;
      
           .left-sidebar {
+               @apply select-none;
                @apply p-2 px-2;
                @apply w-[25%] max-w-55 h-full overflow-y-auto;
                @apply font-ui;

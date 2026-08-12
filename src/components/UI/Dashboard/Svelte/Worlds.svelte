@@ -4,7 +4,7 @@
      // Widgets
      import WorldWidget from "./Widgets/Worlds.svelte"
 
-     const { data, image } = $props();
+     const { data, images } = $props();
 
      const approvedWorlds= $state([])
      const unapprovedWorlds= $state([])
@@ -81,7 +81,7 @@
           <h1>Unapproved Worlds</h1>
           <div class="flex gap-2 flex-wrap content-start">
                {#each unapprovedWorlds as world}
-                    <WorldWidget data={data} world={world} />
+                    <WorldWidget data={data} world={world} images={images} />
                {/each}
           </div>
 

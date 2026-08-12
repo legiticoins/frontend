@@ -3,7 +3,9 @@
      import Transaction from "./Widgets/Transaction.svelte";
 
      const { title, data } = $props();
-     let transactions = $state<any[]>([])
+     let transactions = $state<any[]>([
+          {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""}
+     ])
 
      onMount( async () => {
           const userData = await fetch(`https://wwlc.legiti.dev/api/user/${data.userUUID.split("-").join("")}`).then(async response => await response.json())

@@ -2,7 +2,7 @@
 
 <script>
      import { onMount } from "svelte";
-     const { world, type, data = {} } = $props();
+     const { world, type, images, data = {} } = $props();
      
      // World Icons HREF:
      // const string = `https://raw.githubusercontent.com/jacobsjo/mcicons/refs/heads/icons/item/`
@@ -54,14 +54,14 @@
                {#if type === "approved"}
                     <div class="flex gap-1">
                          <a title="Create Job" href={createJobHref} class="hover:bg-neutral-950/40 duration-100 rounded-ui">
-                              <img src="../../../../../../../src/assets/icons/plus.svg" alt="create-job" class="size-10 dark:invert">
+                              <img src={images.createJobIcon} alt="create-job" class="size-10 dark:invert">
                          </a>
                     </div>
                     
                {:else if type !== "approved"}
                     <div class="flex gap-1 justify-self-center w-full">
                          <button onclick={() => submitForApproval(world.world_uuid, world.name)} title="Submit for Approval" href='/' class="duration-100 rounded-ui w-full flex gap-1 items-center hover:cursor-pointer">
-                              <img src="../../../../../../../src/assets/icons/world.svg" alt="create-job" class="size-7 dark:invert">
+                              <img src={images.worldIcon} alt="create-job" class="size-7 dark:invert">
                               <span class="text-[11px]">SUBMIT FOR APPROVAL</span>
                          </button>
                     </div>

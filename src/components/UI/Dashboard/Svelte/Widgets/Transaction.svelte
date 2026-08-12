@@ -9,7 +9,7 @@
 
 </script>
 
-<details class="p-2 px-5 rounded-ui flex flex-col gap-1 dark:bg-black bg-black/10 select-none">
+<details class="p-2 px-5 rounded-ui flex flex-col gap-1 dark:bg-black/40 bg-black/10 select-none">
 
      <summary>
           {data.job}
@@ -20,3 +20,11 @@
           <h1 class="flex-1 capitalize">{data.status}</h1>
      </div>
 </details>
+
+<main class="px-5 py-3 border border-white/20 flex rounded-ui">
+     <h1>{data.job}</h1>
+     <div>
+          <button>Approve</button>
+          <button>Reject</button>
+     </div>
+</main>

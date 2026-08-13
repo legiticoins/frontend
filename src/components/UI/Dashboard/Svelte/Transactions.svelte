@@ -24,7 +24,7 @@
 
      <div class="flex flex-col gap-1">
           {#each transactions as transaction}
-               <Transaction data={transaction}/>
+              <Transaction data={transaction} cookies={data}/>
           {/each}
      </div>
 

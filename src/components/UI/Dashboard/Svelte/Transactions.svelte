@@ -2,8 +2,10 @@
      import { onMount } from "svelte";
      import Transaction from "./Widgets/Transaction.svelte";
 
-     const { title, data } = $props();
-     let transactions = $state<any[]>([])
+     const { cookies, title, data, icons } = $props();
+     let transactions = $state<any[]>([
+          // {job:"Mow Lawns", id: 1, from: "world", type: "world", fromId: "aaa", status: "waiting", amount: 1, time: ""},
+     ])
 
      onMount( async () => {
        const userData = await fetch(`https://wwlc.legiti.dev/api/user/${data.userUUID.split("-").join("")}`, {headers: {"Authorization": `Bearer ${data.authToken}`}}).then(async response => await response.json())
@@ -24,8 +26,7 @@
 
      <div class="flex flex-col gap-1">
           {#each transactions as transaction}
-              <Transaction data={transaction} cookies={data}/>
+               <Transaction cookies={data} icons={icons} data={transaction}/>
           {/each}
      </div>
-
 </div>

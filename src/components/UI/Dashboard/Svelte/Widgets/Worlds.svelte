@@ -2,17 +2,18 @@
 
 <script>
      import { onMount } from "svelte";
-     const { world, type, data = {} } = $props();
-     
+     const { world, type = "", images, data = {} } = $props();
+     $inspect(images)
      // World Icons HREF:
      // const string = `https://raw.githubusercontent.com/jacobsjo/mcicons/refs/heads/icons/item/`
 
+     let isLoading = $state(false)
      let createJobHref = $state("")
      onMount(async () => {
-          
           if (world.wwlc) {
                createJobHref = `/dashboard/create-job?uuid=${world.wwlc.uuid}&worldToken=${world.wwlc.token}`
           }
+          isLoading = true;
      })
 
      async function submitForApproval(UUID, NAME) {
@@ -46,22 +47,28 @@
 </script>
 
 <main class="hover:cursor-pointer group aspect-square relative md:max-w-50 max-h-45 md:max-h-50 duration-300 w-full h-full border border-neutral-300 hover:border-neutral-900 dark:border-neutral-800 dark:hover:border-neutral-300 rounded-ui shrink-0 overflow-hidden flex items-center">
-     <img src="../../../../../../../src/assets/icons/block.svg" alt="placeholder" class="invert-0 dark:invert opacity-50 size-20 w-full justify-self-center">
+     {#if isLoading && images?.blockIcon}
+          <img src={images.blockIcon} alt="placeholder" class="invert-0 dark:invert opacity-50 size-20 w-full justify-self-center">
+     {/if}
      <div class="bottom-0 absolute p-2 duration-300 h-full flex flex-col justify-center w-full group-hover:opacity-100 opacity-100 md:opacity-0 backdrop-blur-[10px]">
           <h1 class="font-handwritten px-2 text-[150%] max-w-100 w-full text-center">{world.name}</h1>
-          {#if type !== "none"}
-          <div class="absolute bottom-0 left-0 w-full p-2 m-auto hover:scale-102 hover:bg-black/60 duration-300 ">
-               {#if type === "approved"}
+          {#if isLoading && type !== "none"}
+          <div class="absolute bottom-0 left-0 w-full p-2 m-auto hover:scale-102 hover:bg-black/20 duration-300 ">
+               {#if isLoading && type === "approved"}
                     <div class="flex gap-1">
                          <a title="Create Job" href={createJobHref} class="hover:bg-neutral-950/40 duration-100 rounded-ui">
-                              <img src="../../../../../../../src/assets/icons/plus.svg" alt="create-job" class="size-10 dark:invert">
+                              {#if images?.createJobIcon}
+                                   <img src={images.createJobIcon} alt="create-job" class="size-10 dark:invert">
+                              {/if}
                          </a>
                     </div>
                     
-               {:else if type !== "approved"}
+               {:else if isLoading && type !== "approved"}
                     <div class="flex gap-1 justify-self-center w-full">
                          <button onclick={() => submitForApproval(world.world_uuid, world.name)} title="Submit for Approval" href='/' class="duration-100 rounded-ui w-full flex gap-1 items-center hover:cursor-pointer">
-                              <img src="../../../../../../../src/assets/icons/world.svg" alt="create-job" class="size-7 dark:invert">
+                              {#if images?.worldIcon}
+                                   <img src={images.worldIcon} alt="create-job" class="size-7 dark:invert">
+                              {/if}
                               <span class="text-[11px]">SUBMIT FOR APPROVAL</span>
                          </button>
                     </div>

@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import type { APIRoute, AstroCookies } from "astro";
 const { BACKEND_URL, SITE_ROOT } = process.env;
 import { randomBytes, createHash } from "crypto";

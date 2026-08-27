@@ -4,7 +4,7 @@
      // Widgets
      import WorldWidget from "./Widgets/Worlds.svelte"
 
-     const { data, image } = $props();
+     const { data, images } = $props();
 
      const approvedWorlds= $state([])
      const unapprovedWorlds= $state([])
@@ -12,8 +12,9 @@
      let worldsData = $state([]);
 
      onMount( async () => {
+          
           const apiString = `https://api.legiti.dev/owner/${data.userUUID}`
-
+          
           // GET ALL WORLDS FROM API.LEGITI.DEV
           worldsData = await fetch(apiString).then(async response => await response.json())
 
@@ -70,7 +71,7 @@
                     <div class="flex gap-2 flex-wrap content-start">
 
                          {#each approvedWorlds as world}
-                              <WorldWidget data={data} world={world} type="approved" />
+                              <WorldWidget data={data} world={world} images={images} type="approved" />
                          {/each}
                     </div>
                {/if}
@@ -81,7 +82,7 @@
           <h1>Unapproved Worlds</h1>
           <div class="flex gap-2 flex-wrap content-start">
                {#each unapprovedWorlds as world}
-                    <WorldWidget data={data} world={world} />
+                    <WorldWidget data={data} world={world} images={images} />
                {/each}
           </div>
 

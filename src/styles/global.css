@@ -36,6 +36,10 @@
      --font-handwritten: 'Indie Flower';
      --font-ui: 'Google Sans';
 
+     --font-nexa: 'Nexa';
+     --font-flowers-kingdom: 'Flowers Kingdom';
+     --font-akira: 'Akira';
+     
      /* RADIUS */
      --radius-ui: 10px;
 
@@ -63,6 +67,7 @@
           @apply text-main-dark dark:text-main-light;
      
           .left-sidebar {
+               @apply select-none;
                @apply p-2 px-2;
                @apply w-[25%] max-w-55 h-full overflow-y-auto;
                @apply font-ui;
@@ -146,4 +151,43 @@
 @font-face {
      font-family: 'North Point';
      src: url('../assets/font/text/North point.ttf');
+}
+
+
+/* DECORATIVE */
+@font-face {
+     font-family: 'Akira';
+     src: url('../assets/font/text/decorative/Akira Expanded Demo.otf');
+}
+@font-face {
+     font-family: 'Flowers Kingdom';
+     src: url('../assets/font/text/decorative/Flowers Kingdom.ttf');
+}
+@font-face {
+     font-family: 'Nexa';
+     src: url('../assets/font/text/decorative/Nexa-Heavy.ttf');
+}
+
+
+.pace {
+	-webkit-pointer-events: none;
+	pointer-events: none;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	user-select: none;
+}
+
+.pace-inactive {
+	display: none;
+}
+
+.pace .pace-progress {
+	background: #64528e;
+	position: fixed;
+	z-index: 2000;
+	top: 0;
+	right: 100%;
+	width: 100%;
+	height: 2px;
 }

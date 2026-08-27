@@ -17,7 +17,6 @@
      })
 
      async function submitForApproval(UUID, NAME) {
-          console.log(UUID, NAME)
           let responseData;
           try {
                const response = await fetch(`https://wwlc.legiti.dev/api/world/create`, {

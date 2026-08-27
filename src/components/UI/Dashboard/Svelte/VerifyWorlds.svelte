@@ -20,7 +20,6 @@
                     }
                })
                responseData = await response.json()
-               console.log(responseData)
           } catch (error) {
                status = "World couldn't be verified."
                console.log(error)

@@ -3,7 +3,6 @@
 <script>
      import { onMount } from "svelte";
      const { world, type = "", images, data = {} } = $props();
-     $inspect(images)
      // World Icons HREF:
      // const string = `https://raw.githubusercontent.com/jacobsjo/mcicons/refs/heads/icons/item/`
 

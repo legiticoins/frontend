@@ -22,19 +22,6 @@
      }
      
 </script>
-<!-- 
-<details class="p-2 px-5 rounded-ui flex flex-col gap-1 dark:bg-black/40 bg-black/10 select-none">
-
-     <summary>
-          {data.amount}LC {data.fromType == `world` ? `from ${data.fromId}` : `to ${data.fromId}`}
-     </summary>
-     <div>
-          <h1 class="flex-1 ">{data.amount} Legiticoin(s)</h1>
-          <h1 class="flex-1 capitalize">{date}</h1>
-          <h1 class="flex-1 capitalize">{data.status}</h1>
-     </div>
-<<<<<<< HEAD
-</details> -->
 
 <main class="hidden px-5 py-2 border border-black/20 dark:border-white/20 md:flex items-center rounded-ui">
      <div class="md:grid md:grid-cols-5 flex flex-col items-center md:gap-3 md:text-center">
@@ -86,6 +73,3 @@
           {/if}
      </div>
 </main>
-=======
-</details>
->>>>>>> bd667348112005ceefba71d650fd60283f94506d

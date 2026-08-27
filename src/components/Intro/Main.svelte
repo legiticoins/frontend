@@ -1,6 +1,6 @@
 <script>
 	let { data } = $props()
-	let authToken = $state(data.authToken)
+	let authToken = $derived(data.authToken)
 
 	const fonts = [
           "Nexa",

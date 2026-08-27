@@ -2,12 +2,24 @@
      import { onMount } from "svelte";
      let { cookies, icons, data = {id: 1, job: "", fromType: "world/user", fromId: "", status: "approved/rejected/waiting", "amount": 1, time: ""} } = $props()
      let date: string = $state("");
+     let status = $state("");
+     let thing: string = $state("")
 
-     onMount(() => {
+     onMount(async () => {
           date = new Date(data.time).toLocaleString()
+          const worldId = data.fromType == `world` ? `${data.fromId}` : `${data.toId}`
+          try {
+               const response = await fetch(`https://api.legiti.dev/world/${worldId}`)
+               const responseData = await response.json()
+               if (responseData) {
+                 thing = data.fromType == `world` ? `from ${responseData.name}` : `to ${responseData.name}`
+               }
+          } catch (error) {
+               console.log(error)
+          }
      })
 
-     async function approve(transactionID: string) {
+     async function approveTransaction(transactionID: string) {
           try {
                const response = await fetch(`https://wwlc.legiti.dev/api/user/verify/${transactionID}`, {
                     method: 'POST',
@@ -17,7 +29,7 @@
                })
                const data = await response.json()
           } catch (err) {
-               console.log(error)
+               console.log(err)
           }
      }
      
@@ -42,7 +54,7 @@
      </div>
      <div class="ml-auto flex gap-1 items-center">
           {#if data.status === "waiting"}
-               <button onclick={() => {approve(data.id)}} class="flex gap-1 bg-primary-light hover:cursor-pointer dark:bg-primary-dark p-2 rounded-ui"> <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class=" size-6" src={icons.transactionApproveIcon}> <span class="hidden md:block">Approve</span></button>
+               <button onclick={() => {approveTransaction(data.id)}} class="flex gap-1 bg-primary-light hover:cursor-pointer dark:bg-primary-dark p-2 rounded-ui"> <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class=" size-6" src={icons.transactionApproveIcon}> <span class="hidden md:block">Approve</span></button>
           {:else if data.status === "approved"}
                <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class="size-6" src={icons.transactionApproveIcon}>
           {/if}
@@ -67,9 +79,29 @@
      </div>
      <div class="ml-auto flex gap-1 items-center">
           {#if data.status === "waiting"}
-               <button onclick={() => {approve(data.id)}} class="flex gap-1 bg-primary-light hover:cursor-pointer dark:bg-primary-dark p-2 rounded-ui"> <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class=" size-6" src={icons.transactionApproveIcon}> <span class="hidden md:block">Approve</span></button>
+               <button onclick={() => {approveTransaction(data.id)}} class="flex gap-1 bg-primary-light hover:cursor-pointer dark:bg-primary-dark p-2 rounded-ui"> <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class=" size-6" src={icons.transactionApproveIcon}> <span class="hidden md:block">Approve</span></button>
           {:else if data.status === "approved"}
                <img alt="icons" style="filter: brightness(0) saturate(100%) invert(75%) sepia(91%) saturate(407%) hue-rotate(76deg) brightness(88%) contrast(92%);" class="size-6" src={icons.transactionApproveIcon}>
           {/if}
      </div>
 </main>
+
+<details
+    class="p-2 px-5 rounded-ui flex flex-col gap-1 dark:bg-black bg-black/10 select-none"
+>
+    <summary>
+        {data.amount}LC {thing}
+    </summary>
+    <div>
+        <h1 class="flex-1">{data.amount} Legiticoin(s)</h1>
+        <h1 class="flex-1 capitalize">{date}</h1>
+        <h1 class="flex-1 capitalize">{data.status}</h1>
+        <button
+            class="p-2 rounded-ui hover:cursor-pointer max-w-30 justify-self-center flex bg-green-700/50"
+            onclick={() => {
+                approveTransaction(data.id);
+            }}>Approve</button
+        >
+    </div>
+    <p class="my-2">{status}</p>
+</details>
